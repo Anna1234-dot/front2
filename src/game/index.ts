@@ -17,10 +17,15 @@ type Playing = {
     final: String;
     cellCount: number;
     duration: number;
+    duration1: number;
+    duration2: number;
+    duration3: number;
     begin: boolean;
     hasbegin: boolean;
 }
-
+let time1 = 0;
+let time2 = 0;
+let time3 = 0;
 
 const createBomb = (): Bomb => {
     return {
@@ -123,6 +128,9 @@ function createGame(size: number, bombs: number): Playing {
         final: "",
         cellCount: 0,
         duration: 0,
+        duration1: 0,
+        duration2: 0,
+        duration3: 0,
         begin: false,
         hasbegin: false,
     };
@@ -162,11 +170,21 @@ function useGame(game: Playing){
     }
     
     const gameOver = (game: Playing) => {
+
         if (game.final == "You're a loser :("){
             game.field.forEach(r=>r.forEach(b=>b.hidden = false));
         }
         
         game.gameOver = true;
+        if (height == 5 && game.duration > time1){
+            time1 = game.duration;
+        }
+        if (height == 10 && game.duration > time2){
+            time2 = game.duration
+        }
+        if (height == 15 && game.duration > time3){
+            time3 = game.duration;
+        }
     }
     
     const change = (game: Playing) => {
@@ -218,5 +236,5 @@ function useGame(game: Playing){
 }
 
 export {
-    createGame, Bomb, useGame, Playing
+    createGame, Bomb, useGame, Playing, time1, time2, time3
 }
