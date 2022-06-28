@@ -5,6 +5,7 @@
   <router-link to="/Easy"><button class="float">Easy</button></router-link>
   <router-link to="/Medium"><button class="float">Medium</button></router-link>
   <router-link to="/Hard"><button class="float">Hard</button></router-link>
+  <router-link to="/Results"><button class="float">Results</button></router-link>
   <router-view v-if="isRouterAlive"></router-view>
   
 </div>
@@ -17,12 +18,13 @@ import Game from './components/Game.vue' ;
 import Easy from './components/Easy.vue';
 import Medium from './components/Medium.vue';
 import Hard from './components/Hard.vue';
+import Results from './components/Results.vue';
 
 
 export default defineComponent({
   name: 'App',
   components: {
-    Game, Easy, Medium, Hard,
+    Game, Easy, Medium, Hard, Results
   },
   provide(){
     return{
