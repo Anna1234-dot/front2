@@ -3,6 +3,7 @@ import App from '../App.vue'
 import Easy from '../components/Easy.vue'
 import Medium from '../components/Medium.vue'
 import Hard from '../components/Hard.vue'
+import Results from '../components/Results.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -20,6 +21,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Hard',
         component: Hard
     },
+    {
+        path: '/results',
+        name: 'Results',
+        component: Results
+    }
 ]
 
 const router = createRouter({
