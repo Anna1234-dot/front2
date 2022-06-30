@@ -149,6 +149,7 @@ function useGame(game: Playing){
             if (bomb.hidden){
                 game.cellCount++;
             }
+            
             bomb.hidden = false;
             return;
         }
@@ -176,14 +177,16 @@ function useGame(game: Playing){
         }
         
         game.gameOver = true;
-        if (height == 5 && game.duration > time1){
-            time1 = game.duration;
-        }
-        if (height == 10 && game.duration > time2){
-            time2 = game.duration
-        }
-        if (height == 15 && game.duration > time3){
-            time3 = game.duration;
+        if (game.final == "You're a winner!"){
+            if (height == 5 && ((game.duration > time1 && time1 == 0) || (game.duration < time1 && time1!=0))){
+                time1 = game.duration;
+            }
+            if (height == 10 && ((game.duration > time2 && time2 == 0) || (game.duration < time2 && time2!=0))){
+                time2 = game.duration
+            }
+            if (height == 15 && ((game.duration > time3 && time3 == 0) || (game.duration < time3 && time3!=0))){
+                time3 = game.duration;
+            }
         }
     }
     
