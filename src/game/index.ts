@@ -26,6 +26,20 @@ type Playing = {
 let time1 = 0;
 let time2 = 0;
 let time3 = 0;
+if (localStorage.getItem('time1') != null){
+    let t1 =localStorage.getItem('time1')
+    time1 = parseInt(t1)
+}
+if (localStorage.getItem('time2') != null){
+    let t2 =localStorage.getItem('time2')
+    time1 = parseInt(t2)
+}
+if (localStorage.getItem('time3') != null){
+    let t3 =localStorage.getItem('time3')
+    time1 = parseInt(t3)
+}
+
+
 
 const createBomb = (): Bomb => {
     return {
@@ -139,6 +153,7 @@ function createGame(size: number, bombs: number): Playing {
 function useGame(game: Playing){
     const height = game.field.length;
     const width = game.field[0].length;
+    
 
     
 
@@ -180,12 +195,15 @@ function useGame(game: Playing){
         if (game.final == "You're a winner!"){
             if (height == 5 && ((game.duration > time1 && time1 == 0) || (game.duration < time1 && time1!=0))){
                 time1 = game.duration;
+                localStorage.setItem('time1', JSON.stringify(time1));
             }
             if (height == 10 && ((game.duration > time2 && time2 == 0) || (game.duration < time2 && time2!=0))){
                 time2 = game.duration
+                localStorage.setItem('time2', JSON.stringify(time2));
             }
             if (height == 15 && ((game.duration > time3 && time3 == 0) || (game.duration < time3 && time3!=0))){
                 time3 = game.duration;
+                localStorage.setItem('time3', JSON.stringify(time3));
             }
         }
     }
